@@ -2,6 +2,9 @@
 ​
 sudo apt-get -y update
 sudo apt-get -y upgrade
+
+# Oh-my-Zsh
+sudo apt-get install zsh -y
 ​
 # Docker install
 sudo apt install -y docker.io
@@ -28,4 +31,10 @@ sudo mkdir -p /usr/local/bin/
 sudo install minikube /usr/local/bin/
 ​
 ## Commands to input manually
+# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
+#
 # minikube start
+#
+# git clone https://github.com/k8s-school/examples.git
+# cd examples/
+# git checkout v1.16

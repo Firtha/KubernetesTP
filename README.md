@@ -69,11 +69,11 @@ Deploy nginx in the demo namespace
 
 - kubectl --namespace=demo get pods
 
-Display a yaml file based on an imperative run command
+Display/Build a yaml file based on an imperative run command
 
 - kubectl run kuard --image=gcr.io/kuar-demo/kuard-amd64:1 --restart=Never --dry-run -o yaml
 
-- kubectl run kuard --image=gcr.io/kuar-demo/kuard-amd64:1 --requests='cpu=500m,memory=150Mi' --limits='cpu=1000m,memory=300Mi' --port=8080 --restart=Never --dry-run -o yaml
+- kubectl run kuard --image=gcr.io/kuar-demo/kuard-amd64:1 --requests='cpu=500m,memory=150Mi' --limits='cpu=1000m,memory=300Mi' --port=8080 --restart=Never --dry-run=client -o yaml > custom-kuard.yaml
 
 Launch/destroy a pod from a yaml file
 
@@ -97,3 +97,31 @@ Remove a label from a namespace (same ex)
 The - will reset all values of env=
 
 - kubectl label namespaces demo env-
+
+Get pods with label selectors
+
+- kubectl get po -l key1=value1
+
+Put an annotation to a pod
+
+- kubectl annotate pod pod_name key1="value1"
+
+Display annotations
+
+- kubectl get po -o yaml | grep -A1 annotations
+
+Launch a Job
+
+- kubectl run busybox --image=busybox --restart=OnFailure
+
+Create a ClusterIP Service Type
+
+- kubectl expose deploy hello-world --type=ClusterIP --port=80 --target-port=80 --dry-run=client -o yaml  > hello-world-service.yaml
+
+- kubectl apply -f hello-world-service.yaml
+
+Debug a box (launch + opening prompt)
+
+- kubectl run busybox --image=busybox --restart=Never sleep 3600
+
+- kubectl exec -it busybox -- ash
