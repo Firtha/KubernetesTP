@@ -7,9 +7,6 @@ Vagrant.configure("2") do |config|
         v.memory = 4096
     end
 
-    # Groovy TP : Mysql container ip
-    config.vm.network "forwarded_port", guest: 3306, host: 3306
-
     config.vm.network "forwarded_port", guest: 8081, host: 8081
 
     config.vm.network "forwarded_port", guest: 8080, host: 8080
