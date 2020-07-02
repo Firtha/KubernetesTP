@@ -125,3 +125,21 @@ Debug a box (launch + opening prompt)
 - kubectl run busybox --image=busybox --restart=Never sleep 3600
 
 - kubectl exec -it busybox -- ash
+
+Create an imperative nginx deployment
+
+- kubectl create deployment nginx --image=nginx:1.7.12
+
+Update the replicas count (=3) of a deployment (nginx)
+
+- kubectl scale deploy nginx --replicas=3
+
+To update the scale of replicas you can also edit the deployment
+Editing running deployment :
+
+- kubectl edit deploy nginx
+
+Creating new yaml file then edit it
+
+- kubectl create deployment nginx --image=nginx:1.7.12 --dry-run=client -o yaml > nginx-deploy.yaml
+- >> Edit the number of replicas in the file nginx-deploy.yaml
