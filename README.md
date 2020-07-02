@@ -1,6 +1,7 @@
 # Kubernetes TP ESGI
 
-The 30/06/2020 with Karim Ammous
+This repository is a support for trying and testing Kubernetes inside a vagrant VM.
+Some commands and tips are given but according to the version of kubectl you use you will surely need to check the official documentation instead.
 
 ## Quickstart
 
@@ -30,12 +31,34 @@ NB: Check/Clone <https://github.com/k8s-school/examples.git> for yaml files exam
 
 ## Commands to input manually after vagrant build
 
-- minikube start
+- Install and configure Oh My Zsh (nicer prompt associated to git)
 
-- kubectl version [ --short | --client | --server ]
+```bash
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
+```
+
+- Start minikube
+
+```bash
+minikube start
+```
+
+- Check validity of kubectl installation
+
+```bash
+kubectl version [ --short | --client | --server ]
+```
 
 Install Kubernetes with Minikube :
 <https://kubernetes.io/docs/setup/learning-environment/minikube/>
+
+- Get some useful yaml files as examples
+
+```bash
+git clone https://github.com/k8s-school/examples.git
+cd examples/
+git checkout v1.16
+```
 
 ## How to configure kubectl
 
@@ -50,6 +73,10 @@ Install Kubernetes with Minikube :
 List all resources / shortnames
 
 - kubectl api-resources
+
+Describe a resource and get useful details on it
+
+- kubectl explain pod/namespace/deployment/ etc...
 
 Create a namespace
 
